@@ -12,21 +12,20 @@ class NoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function all()
     {
-        //
+        $notes = Note::all();
+
+        return response($notes, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
+    public function one($noteId)
+    {
+        $note = Note::find($noteId);
+
+        return response($note, 200);
+    }
     /**
      * Store a newly created resource in storage.
      *
