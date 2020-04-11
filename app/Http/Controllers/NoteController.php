@@ -45,27 +45,6 @@ class NoteController extends Controller
         return response($note, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Note $note)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Note  $note
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Note $note)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -76,7 +55,14 @@ class NoteController extends Controller
      */
     public function update(Request $request, Note $note)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required',
+            'description' => 'required' 
+         ]);
+ 
+         $note->update($data);
+ 
+         return response($note, 200);
     }
 
     /**
